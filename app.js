@@ -58,7 +58,8 @@ document.getElementById('btn-string').addEventListener('click', () => {
 document.getElementById('btn-number').addEventListener('click', () => {
     // Podemos hacer cálculos antes de mostrarlos
     const calculo = datoNumber + 29; 
-    mostrarConEfecto(`<strong>Number:</strong> ${datoNumber} <br> <span style="font-size:1rem; color:#aaa;">(En 29 años será el ${calculo})</span>`, 'pop-effect');
+    mostrarConEfecto(`<strong>Number:</strong> ${datoNumber} <br> 
+    <span style="font-size:1rem; color:#aaa;">(En 29 años será el ${calculo})</span>`, 'pop-effect');
 });
 
 document.getElementById('btn-boolean').addEventListener('click', () => {
