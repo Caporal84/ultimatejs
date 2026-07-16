@@ -3,23 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate JS - Tipos de Datos</title>
+    <title>Creador V5</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Explorador de Tipos de Datos en JavaScript</h1>
-        <p>Interactúa con los botones para ver cómo JavaScript maneja la información.</p>
+    <div class="hoja-personaje">
+        <h1>Físicos</h1>
         
-        <div class="btn-group">
-            <button id="btn-string">String</button>
-            <button id="btn-number">Number</button>
-            <button id="btn-boolean">Boolean</button>
-            <button id="btn-array">Array</button>
-            <button id="btn-object">Object</button>
+        <div class="fila-atributo" data-atributo="fuerza">
+            <span class="nombre-atributo">Fuerza</span>
+            <div class="puntos">
+                <span class="punto activo" data-valor="1"></span>
+                <span class="punto" data-valor="2"></span>
+                <span class="punto" data-valor="3"></span>
+                <span class="punto" data-valor="4"></span>
+                <span class="punto" data-valor="5"></span>
+            </div>
         </div>
 
-        <div id="display-area">Elige un tipo de dato arriba...</div>
+        <div class="fila-atributo" data-atributo="destreza">
+            <span class="nombre-atributo">Destreza</span>
+            <div class="puntos">
+                <span class="punto activo" data-valor="1"></span>
+                <span class="punto" data-valor="2"></span>
+                <span class="punto" data-valor="3"></span>
+                <span class="punto" data-valor="4"></span>
+                <span class="punto" data-valor="5"></span>
+            </div>
+        </div>
+
+        <div class="fila-atributo" data-atributo="resistencia">
+            <span class="nombre-atributo">Resistencia</span>
+            <div class="puntos">
+                <span class="punto activo" data-valor="1"></span>
+                <span class="punto" data-valor="2"></span>
+                <span class="punto" data-valor="3"></span>
+                <span class="punto" data-valor="4"></span>
+                <span class="punto" data-valor="5"></span>
+            </div>
+        </div>
+
+        <div class="panel-consola">
+            <h3>Objeto en Memoria:</h3>
+            <pre id="consola-js">El objeto se mostrará aquí...</pre>
+        </div>
     </div>
 
     <script src="app.js"></script>

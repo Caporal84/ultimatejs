@@ -1,102 +1,61 @@
-// Capturamos el elemento HTML donde mostraremos los resultados
-const displayArea = document.getElementById('display-area');
-
-// ==========================================
-// 1. DEFINICIÓN DE TIPOS DE DATOS
-// ==========================================
-
-// String (Cadenas de texto)
-const datoString = "Vampiro: La Mascarada 5ª Edición";
-
-
-// Number (Números, ya sean enteros o decimales)
-const datoNumber = 1997;
-const datonum = datoNumber.toString(10);  // "1997"
-
-
-// Boolean (Verdadero o Falso)
-const datoBoolean = true;
-
-// Array (Listas o colecciones de datos ordenados)
-const datoArray = ["Dragon Quest", "Final Fantasy", "Pokemon", 1, 23, true, false];
-
-// Object (Estructuras de datos complejas con pares clave/valor)
-const datoObject = {
-    titulo: "Hombre Lobo: El Apocalipsis",
-    edicion: "5ª",
-    jugadores: 4,
-    enCurso: true
+// 1. EL OBJETO: Nuestra única fuente de verdad
+const personaje = {
+    atributos: {
+        fuerza: 1,
+        destreza: 1,
+        resistencia: 1
+    }
 };
 
-const pj ={
-    nombre: "Lilith",
-    clan: "Grangel",
-    generacion: 9,
-    atributos: {
-        fuerza: 3,
-        destreza: 4,
-        resistencia: 2
-    },
-    habilidades: ["Sigilo", "Persuasión", "Armas de fuego"],
-    disciplinas: {
-        protean: 2,
-        fortitude: 3,
-        celerity: 1
-    }
+// 2. REFERENCIAS AL DOM
+// Capturamos todos los circulitos de la pantalla
+const todosLosPuntos = document.querySelectorAll('.punto');
+const consolaJS = document.getElementById('consola-js');
+
+// Mostramos el estado inicial en pantalla
+actualizarConsola();
+
+// 3. LOGICA AL HACER CLIC
+todosLosPuntos.forEach(punto => {
+    punto.addEventListener('click', (evento) => {
+        // Obtenemos qué punto se ha pulsado (ej: el 3)
+        const valorPulsado = parseInt(evento.target.dataset.valor);
+        
+        // Obtenemos a qué atributo pertenece subiendo a su elemento padre (ej: "fuerza")
+        const atributoSeleccionado = evento.target.closest('.fila-atributo').dataset.atributo;
+
+        // Actualizamos el objeto JS con el nuevo valor
+        personaje.atributos[atributoSeleccionado] = valorPulsado;
+
+        // Llamamos a la función que redibuja los puntos
+        actualizarInterfaz(atributoSeleccionado, valorPulsado);
+        
+        // Mostramos cómo el objeto cambia en tiempo real
+        actualizarConsola();
+    });
+});
+
+// 4. FUNCIONES DE ACTUALIZACIÓN VISUAL
+function actualizarInterfaz(atributo, valor) {
+    // Buscamos la fila específica que tenemos que repintar
+    const fila = document.querySelector(`.fila-atributo[data-atributo="${atributo}"]`);
+    const puntosDeFila = fila.querySelectorAll('.punto');
+
+    // Recorremos los 5 puntos de esa fila
+    puntosDeFila.forEach(punto => {
+        const valorDelPunto = parseInt(punto.dataset.valor);
+        
+        // Si el valor del punto es menor o igual al que hemos pulsado, lo encendemos
+        if (valorDelPunto <= valor) {
+            punto.classList.add('activo');
+        } else {
+            // Si es mayor, lo apagamos
+            punto.classList.remove('activo');
+        }
+    });
 }
 
-
-
-// ==========================================
-// 2. FUNCIONES Y EFECTOS
-// ==========================================
-
-/**
- * Función principal que recibe el contenido a mostrar y la clase CSS del efecto.
- * Es vistosa porque reinicia la animación en el DOM cada vez que se llama.
- */
-function mostrarConEfecto(contenidoHTML, claseEfecto) {
-    // Primero, limpiamos las clases y el contenido anterior
-    displayArea.className = '';
-    displayArea.innerHTML = '';
-
-    // Usamos un pequeño retraso (setTimeout) para engañar al navegador.
-    // Esto fuerza a que se vuelva a reproducir la animación CSS desde cero.
-    setTimeout(() => {
-        displayArea.innerHTML = contenidoHTML;
-        displayArea.classList.add(claseEfecto);
-    }, 10);
+function actualizarConsola() {
+    // Mostramos el objeto formateado para que los alumnos lo entiendan
+    consolaJS.innerHTML = JSON.stringify(personaje.atributos, null, 4);
 }
-
-// ==========================================
-// 3. EVENTOS (Conectando botones con JS)
-// ==========================================
-
-document.getElementById('btn-string').addEventListener('click', () => {
-    mostrarConEfecto(`<strong>String:</strong> "${datoString}"`, 'slide-effect');
-});
-
-document.getElementById('btn-number').addEventListener('click', () => {
-    // Podemos hacer cálculos antes de mostrarlos
-    const calculo = datoNumber + 29; 
-    mostrarConEfecto(`<strong>Number:</strong> ${datoNumber} <br> 
-    <span style="font-size:1rem; color:#aaa;">(En 29 años será el ${calculo})</span>`, 'pop-effect');
-});
-
-document.getElementById('btn-boolean').addEventListener('click', () => {
-    // Usamos un operador ternario para tomar una decisión basada en el booleano
-    const mensaje = datoBoolean ? "¡Sí, es verdadero! (true)" : "Falso (false)";
-    mostrarConEfecto(`<strong>Boolean:</strong> ${mensaje}`, 'spin-effect');
-});
-
-document.getElementById('btn-array').addEventListener('click', () => {
-    // .join() convierte el array en una cadena de texto separada por comas
-    const listaFormateada = datoArray.join(' ⚔️ ');
-    mostrarConEfecto(`<strong>Array:</strong><br>[ ${listaFormateada} ]`, 'slide-effect');
-});
-
-document.getElementById('btn-object').addEventListener('click', () => {
-    // JSON.stringify convierte el objeto a texto para poder verlo bonito en pantalla
-    const objetoFormateado = JSON.stringify(pj, null, 4);
-    mostrarConEfecto(`<strong>Object:</strong><br><pre>${objetoFormateado}</pre>`, 'pop-effect');
-});
