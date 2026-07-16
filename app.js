@@ -8,14 +8,17 @@ const displayArea = document.getElementById('display-area');
 // String (Cadenas de texto)
 const datoString = "Vampiro: La Mascarada 5ª Edición";
 
+
 // Number (Números, ya sean enteros o decimales)
 const datoNumber = 1997;
+const datonum = datoNumber.toString(10);  // "1997"
+
 
 // Boolean (Verdadero o Falso)
 const datoBoolean = true;
 
 // Array (Listas o colecciones de datos ordenados)
-const datoArray = ["Dragon Quest", "Final Fantasy", "Pokemon"];
+const datoArray = ["Dragon Quest", "Final Fantasy", "Pokemon", 1, 23, true, false];
 
 // Object (Estructuras de datos complejas con pares clave/valor)
 const datoObject = {
@@ -24,6 +27,24 @@ const datoObject = {
     jugadores: 4,
     enCurso: true
 };
+
+const pj ={
+    nombre: "Lilith",
+    clan: "Grangel",
+    generacion: 9,
+    atributos: {
+        fuerza: 3,
+        destreza: 4,
+        resistencia: 2
+    },
+    habilidades: ["Sigilo", "Persuasión", "Armas de fuego"],
+    disciplinas: {
+        protean: 2,
+        fortitude: 3,
+        celerity: 1
+    }
+}
+
 
 
 // ==========================================
@@ -76,6 +97,6 @@ document.getElementById('btn-array').addEventListener('click', () => {
 
 document.getElementById('btn-object').addEventListener('click', () => {
     // JSON.stringify convierte el objeto a texto para poder verlo bonito en pantalla
-    const objetoFormateado = JSON.stringify(datoObject, null, 4);
+    const objetoFormateado = JSON.stringify(pj, null, 4);
     mostrarConEfecto(`<strong>Object:</strong><br><pre>${objetoFormateado}</pre>`, 'pop-effect');
 });
