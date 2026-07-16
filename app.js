@@ -19,8 +19,8 @@ const datoArray = ["Dragon Quest", "Final Fantasy", "Pokemon"];
 
 // Object (Estructuras de datos complejas con pares clave/valor)
 const datoObject = {
-    titulo: "Werewolf: The Apocalypse",
-    edicion: "5th",
+    titulo: "Hombre Lobo: El Apocalipsis",
+    edicion: "5ª",
     jugadores: 4,
     enCurso: true
 };
