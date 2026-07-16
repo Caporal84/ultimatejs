@@ -6,7 +6,7 @@ const displayArea = document.getElementById('display-area');
 // ==========================================
 
 // String (Cadenas de texto)
-const datoString = "Vampire: The Masquerade 5th Edition";
+const datoString = "Vampiro: La Mascarada 5ª Edición";
 
 // Number (Números, ya sean enteros o decimales)
 const datoNumber = 1997;
@@ -15,7 +15,7 @@ const datoNumber = 1997;
 const datoBoolean = true;
 
 // Array (Listas o colecciones de datos ordenados)
-const datoArray = ["Dragon Quest", "Final Fantasy", "Pokémon"];
+const datoArray = ["Dragon Quest", "Final Fantasy", "Pokemon"];
 
 // Object (Estructuras de datos complejas con pares clave/valor)
 const datoObject = {
