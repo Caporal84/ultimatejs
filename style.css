@@ -56,7 +56,7 @@ h1 {
     border-color: #ff3333;
 }
 
-/* Panel para que los alumnos vean el JS en tiempo real */
+/* Panel para que vean el JS en tiempo real */
 .panel-consola {
     margin-top: 30px;
     background-color: #000;
